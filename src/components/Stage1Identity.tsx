@@ -73,9 +73,9 @@ export const Stage1Identity: React.FC<Stage1IdentityProps> = ({
 
   // Generate opsi hari (1 - 31)
   const days = Array.from({ length: 31 }, (_, i) => String(i + 1));
-  // Generate opsi tahun (2010 - 2016 untuk siswa kelas 6 SD)
+  // Generate opsi tahun kelahiran siswa kelas 2 SD (rentang usia 7-8 tahun: 2016 - 2022)
   const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 10 }, (_, i) => String(currentYear - 16 + i));
+  const years = Array.from({ length: 7 }, (_, i) => String(currentYear - 10 + i));
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6">
@@ -255,19 +255,15 @@ export const Stage1Identity: React.FC<Stage1IdentityProps> = ({
             <div className="space-y-2 text-xs">
               <div className="flex items-center justify-between bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
                 <span>1. Pilihan Ganda (PG)</span>
-                <span className="font-bold text-blue-300">18 Butir</span>
+                <span className="font-bold text-blue-300">10 Butir</span>
               </div>
               <div className="flex items-center justify-between bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
-                <span>2. Pilihan Ganda Kompleks (PGK)</span>
-                <span className="font-bold text-emerald-300">3 Butir</span>
-              </div>
-              <div className="flex items-center justify-between bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
-                <span>3. PGK Kategori (Benar / Salah)</span>
-                <span className="font-bold text-amber-300">9 Butir</span>
+                <span>2. Soal Benar - Salah</span>
+                <span className="font-bold text-emerald-300">5 Butir</span>
               </div>
               <div className="flex items-center justify-between pt-2 border-t border-slate-800 text-slate-300">
                 <span>Total Butir Soal:</span>
-                <span className="font-extrabold text-white text-sm">30 Soal</span>
+                <span className="font-extrabold text-white text-sm">15 Soal</span>
               </div>
             </div>
 
@@ -278,7 +274,7 @@ export const Stage1Identity: React.FC<Stage1IdentityProps> = ({
               </p>
               <p className="flex items-start gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
-                <span>Seluruh 30 soal wajib dijawab sebelum jawaban dapat dikirimkan ke server.</span>
+                <span>Seluruh 15 soal wajib dijawab sebelum jawaban dapat dikirimkan ke server.</span>
               </p>
             </div>
           </div>

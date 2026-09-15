@@ -1,6 +1,6 @@
 {
   "name": "Soal remix nuning",
-  "description": "Aplikasi Tes Sumatif Matematika TKA Kelas VI SD Negeri 3 Loloan Timur dengan 4 tahap tes, sinkronisasi Google Spreadsheet, unduh PDF naskah \u0026 hasil tes, serta panel guru.",
+  "description": "Aplikasi Tes Sumatif Matematika Kelas 2 SD Negeri 3 Loloan Timur lingkup materi Penjumlahan dan Pengurangan dengan 10 soal Pilihan Ganda dan 5 soal Benar/Salah, terintegrasi Google Spreadsheet dan ekspor PDF.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

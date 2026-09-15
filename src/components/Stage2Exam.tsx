@@ -357,7 +357,7 @@ export const Stage2Exam: React.FC<Stage2ExamProps> = ({
                   <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700">
                     {currentQ.type === 'pg' && 'Pilihan Ganda'}
                     {currentQ.type === 'pgk' && 'Pilihan Ganda Kompleks'}
-                    {currentQ.type === 'pgk_kategori' && 'PGK Kategori (Benar / Salah)'}
+                    {currentQ.type === 'pgk_kategori' && 'Soal Benar / Salah'}
                   </span>
                 </div>
                 <span className="text-xs font-medium text-slate-500">
@@ -369,7 +369,7 @@ export const Stage2Exam: React.FC<Stage2ExamProps> = ({
               <div className="mb-4 text-xs font-semibold px-3 py-1.5 rounded-lg bg-blue-50 text-blue-800 border border-blue-100 inline-block">
                 {currentQ.type === 'pg' && 'Pilihlah salah satu jawaban yang paling tepat.'}
                 {currentQ.type === 'pgk' && 'Pilihlah seluruh pernyataan yang bernilai benar (bisa lebih dari satu).'}
-                {currentQ.type === 'pgk_kategori' && 'Tentukan pilihan Benar atau Salah untuk setiap pernyataan di bawah ini.'}
+                {currentQ.type === 'pgk_kategori' && 'Tentukan apakah pernyataan di bawah ini BENAR atau SALAH.'}
               </div>
 
               {/* Teks Soal */}
@@ -449,7 +449,7 @@ export const Stage2Exam: React.FC<Stage2ExamProps> = ({
                 </div>
               )}
 
-              {/* Tampilan Opsi Jawaban: PGK Kategori (Benar / Salah) */}
+              {/* Tampilan Opsi Jawaban: PGK Kategori / Benar Salah */}
               {currentQ.type === 'pgk_kategori' && (
                 <div className="space-y-3">
                   {(currentQ.statements || []).map((st, sIdx) => {
@@ -462,37 +462,39 @@ export const Stage2Exam: React.FC<Stage2ExamProps> = ({
                     return (
                       <div
                         key={st.id}
-                        className="p-3.5 sm:p-4 rounded-xl border border-slate-200 bg-slate-50/60"
+                        className="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-slate-50/80 shadow-2xs"
                       >
-                        <p className="text-xs sm:text-sm text-slate-800 font-medium mb-3">
-                          <span className="font-bold text-blue-700 mr-1.5">
-                            {sIdx + 1}.
-                          </span>
+                        <p className="text-sm sm:text-base text-slate-900 font-semibold mb-4 leading-relaxed">
+                          {currentQ.statements && currentQ.statements.length > 1 ? (
+                            <span className="font-bold text-blue-700 mr-1.5">
+                              {sIdx + 1}.
+                            </span>
+                          ) : null}
                           {st.text}
                         </p>
-                        <div className="flex items-center gap-3">
+                        <div className="grid grid-cols-2 gap-3 sm:gap-4">
                           <button
                             type="button"
                             onClick={() => handleSetCategoryStatement(st.id, true)}
-                            className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 border cursor-pointer ${
+                            className={`py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 border cursor-pointer ${
                               currentVal === true
-                                ? 'bg-emerald-600 border-emerald-600 text-white shadow-xs'
-                                : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-100'
+                                ? 'bg-emerald-600 border-emerald-600 text-white shadow-md ring-2 ring-emerald-300 scale-[1.01]'
+                                : 'bg-white border-slate-300 text-slate-700 hover:bg-emerald-50 hover:border-emerald-300'
                             }`}
                           >
-                            <CheckCircle2 className="w-3.5 h-3.5" />
+                            <CheckCircle2 className="w-4 h-4" />
                             <span>BENAR</span>
                           </button>
                           <button
                             type="button"
                             onClick={() => handleSetCategoryStatement(st.id, false)}
-                            className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 border cursor-pointer ${
+                            className={`py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 border cursor-pointer ${
                               currentVal === false
-                                ? 'bg-rose-600 border-rose-600 text-white shadow-xs'
-                                : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-100'
+                                ? 'bg-rose-600 border-rose-600 text-white shadow-md ring-2 ring-rose-300 scale-[1.01]'
+                                : 'bg-white border-slate-300 text-slate-700 hover:bg-rose-50 hover:border-rose-300'
                             }`}
                           >
-                            <XCircle className="w-3.5 h-3.5" />
+                            <XCircle className="w-4 h-4" />
                             <span>SALAH</span>
                           </button>
                         </div>
